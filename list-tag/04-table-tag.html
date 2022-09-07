@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- table要包含tr，tr要包含td  -->
+    <table border="1" style="width: 100%; height:400px">
+        <caption><strong>期末成绩</strong></caption>
+        <!-- table row -->
+        <tr>
+            <!-- table data -->
+            <th>姓名</th>
+            <th>成绩</th>
+            <th>评语</th>
+        </tr>
+        <tr>
+            <td>小明</td>
+            <td>100</td>
+            <td>表现不错</td>
+        </tr>
+        <tr>
+            <td>小红</td>
+            <td>80</td>
+            <td>还需努力</td>
+        </tr>
+    </table>
+    <!-- 表格结构标签 thead tbody tfoot -->
+    <table border="1" style="width: 100%; height:400px">
+        <caption><strong>期末成绩</strong></caption>
+        <thead>
+            <!-- table row -->
+            <tr>
+                <!-- table data -->
+                <th>姓名</th>
+                <th>成绩</th>
+                <th>评语</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>小明</td>
+                <td>100</td>
+                <td>表现不错</td>
+            </tr>
+            <tr>
+                <td>小红</td>
+                <td>80</td>
+                <td>还需努力</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>总结</td>
+                <td>不错</td>
+                <td>假期快乐</td>
+            </tr>
+        </tfoot>
+    </table>
+    <!-- 单元格合并
+         1.明确合并哪几个单元格
+         2.通过左上原则，确定保留谁删除谁
+             上下合并：只保留最上的
+             左右合并：值保留最左的
+         3.给保留的单元格设置：跨行合并（rowspan）或者跨列合并（colspan）
+         4.跨结构单元格不能合并 -->
+    <table border="1" style="width: 100%; height:400px">
+        <caption><strong>期末成绩</strong></caption>
+        <thead>
+            <!-- table row -->
+            <tr>
+                <!-- table data -->
+                <th>姓名</th>
+                <th>成绩</th>
+                <th>评语</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>小明</td>
+                <td rowspan="2">100</td>
+                <td>表现不错</td>
+            </tr>
+            <tr>
+                <td>小红</td>
+                <td>还需努力</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>总结</td>
+                <td colspan="2">不错</td>
+                <!-- <td>假期快乐</td> -->
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
