@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 10px solid #000;
+            /* 默认是 content-box：任何边框和内边距的宽度都会加到最后被绘制出来的元素宽度中 */
+            /* border-box：内容区的实际宽度是width - (border + padding) */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>文字</div>
+</body>
+</html>

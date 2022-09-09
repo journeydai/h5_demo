@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 字号 默认 16 */
+        .size {
+            font-size: 30px;
+        }
+        /* 字体粗细 */
+        .weight {
+            font-weight: 800;
+        }
+        /* 斜体 */
+        .em {
+            /* normal 不倾斜 */
+            font-style: italic;
+        }
+        /* 字体 font-family */
+        /* 未安装微软雅黑，字体为黑体 */
+        /* 未安装黑体，字体为非衬线字体系列 */
+        div {
+            font-family: 微软雅黑, 黑体, sans-serif;
+        }
+        /* 一个属性冒号后有多个值的写法：复合属性 */
+        .composite {
+            /* font: style weight size family */
+            font: italic 700 40px 宋体;
+        }
+    </style>
+</head>
+<body>
+    <div class="size">字号30px</div>    
+    <div class="weight">粗体</div>
+    <div class="em">斜体</div>
+    <div class="composite">复合文本</div>
+</body>
+</html>
