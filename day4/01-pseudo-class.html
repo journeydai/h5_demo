@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 结构伪类 */
+        /* selectors:pseudo-class {
+            property: value
+        } */
+        
+        /* 找到第3个li，并修改文字颜色 */
+        li:nth-child(2n+1) {
+            color: red;
+        }
+        /* 找到倒数的奇数个，改变背景色 */
+        li:nth-last-child(odd) {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- ul>li{这是第$个li}*8 -->
+    <ul>
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+        <li>这是第6个li</li>
+        <li>这是第7个li</li>
+        <li>这是第8个li</li>
+    </ul>
+</body>
+</html>
