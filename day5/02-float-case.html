@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            width: 1226px;
+            height: 100px;
+            background-color: green;
+            margin: 0 auto;
+        }
+
+        .content {
+            width: 1226px;
+            height: 460px;
+            background-color: #87ceeb;
+            margin: 0 auto;
+        }
+
+        .left {
+            width: 234px;
+            height: 100%;
+            background-color: #ffa550;
+
+            float: left;
+        }
+
+        .right {
+            width: 992px;
+            height: 100%;
+            background-color: #87ceeb;
+
+            float: right;
+        }
+
+        /* css书写顺序：浏览器执行效率更高,加载页面更快
+            1.浮动/display
+            2.盒子模型: margin border padding 宽高背景色
+            3.文字样式 */
+    </style>
+</head>
+<body>
+    <div class="header">头部</div>
+    <div class="content">
+        right
+        <div class="left">left</div>
+        <!-- <div class="right">right</div> -->
+    </div>
+</body>
+</html>

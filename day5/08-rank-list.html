@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-family: sans-serif;
+            background-color: #fff;
+        }
+
+        .header {
+            width: 100%;
+            height: 48px;
+            text-align: center;
+        }
+
+        .header div {
+            width: 60px;
+            height: 30px;
+            padding-top: 16px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .header .left {
+            float: left;
+            margin-left: 10%;
+        }
+
+        .header .right {
+            float: right;
+            margin-right: 10%;
+        }
+
+        .normal {
+            color: #666;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .selected {
+            color: #000;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .selected::after {
+            content: '';
+            width: 36px;
+            height: 6px;
+            background-color: #C2E820;
+            display: block;
+            margin: 0 auto;
+            border-radius: 3px;
+            transform: translateY(-4px);
+        }
+
+        .top-three {
+            margin-top: 107.5px;
+            width: 100%;
+            height: 249px;
+            background-image: url(./top_three.png);
+            background-size: 100% 249px;
+        }
+
+        .platform {
+            float: left;
+            width: 100%;
+            /* height: 100%; */
+            list-style: none;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .platform li {
+            float: left;
+            width: 33.3%;
+        }
+
+        .first .icon {
+            margin: 0 auto;
+            width: 70px;
+            height: 70px;
+            background-color: pink;
+        }
+
+        .first .medal {
+            float: left;
+            display: inline-block;
+            width: 25px;
+            height: 29px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left normal">
+            粉丝数
+        </div>
+        <div class="mid selected">
+            发帖数
+        </div>
+        <div class="right normal">
+            活动数
+        </div>
+    </div>
+    <div class="top-three">
+        <ul class="platform">
+            <li>
+                <div class="second">
+                    2
+                </div>
+            </li>
+            <li>
+                <div class="first">
+                    <div class="icon"></div>
+                    <div class="medal">
+
+                    </div>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>

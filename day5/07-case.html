@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        div {
+            height: 78px;
+            width: 100%;
+        }
+
+        div h2 {
+            display: inline-block;
+        }
+
+        .title {
+            margin-top: 18px;
+            margin-left: 15.5px;
+            color: #000000;
+            font-size: 17px;
+        }
+
+        .icon {
+            float: left;
+            margin-top: 20px;
+            margin-left: 40px;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .icon1 {
+            background-color: aqua;
+        }
+
+        .icon2 {
+            background-color: blue;
+        }
+
+        .icon3 {
+            background-color: pink;
+        }
+
+        .description {
+            margin-top: 5px;
+            margin-left: 75px;
+            color: #666666;
+            font-size: 13px;
+        }
+
+        .list .btn {
+            margin-top: 5.5px;
+            margin-left: 75px;
+            height: 17px;
+            background-color: #fff;
+            border: 0;
+        }
+
+        .list .btn::after {
+            content: '';
+            float: left;
+            width: 16px;
+            height: 16px;
+            display: block;
+            background-image: url(./icon-arrow_right.png);
+            background-size: 100% 100%;
+        }
+
+        .list .arrow {
+            width: 16px;
+            height: 16px;
+            /* margin-top: 5px; */
+        }
+
+        .btn_title {
+            float: left;
+            display: inline-block;
+            color: #999999;
+            font-size: 11px;
+            line-height: 17px;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div class="icon icon1"></div>
+        <h2 class="title">传祺官方</h2>
+        <p class="description">传祺APP社区官方角色</p>
+    </div>
+    <div class="list">
+        <div class="icon icon2"></div>
+        <h2 class="title">认证车主</h2>
+        <p class="description">对应车型传祺车主</p>
+    </div>
+    <div class="list">
+        <div class="icon icon3"></div>
+        <h2 class="title">活动专属标记</h2>
+        <p class="description">影豹圈#豹冲，向2022迸发#活动参与用</p>
+        <button type="button" class="btn">
+            <span class="btn_title">点击了解详情</span>
+        </button>
+    </div>
+</body>
+</html>
