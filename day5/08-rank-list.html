@@ -6,17 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./rank-list.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-family: sans-serif;
-            background-color: #fff;
-        }
-    </style>
 </head>
-<body>
+<body onscroll="logScroll()">
+    <div class="nav">
+        <button class="back" onclick="clickd()"></button>
+        城市圈排行
+    </div>
     <div class="header">
         <div class="left normal">
             粉丝数
@@ -28,42 +23,112 @@
             活动数
         </div>
     </div>
-    <div class="top-three">
-        <ul class="platform">
-            <li>
-                <div class="second">
-                    <div class="icon"></div>
-                    <div class="medal">
-                        <img src="./medal_second.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+    <div class="container">
+        <div class="top-three">
+            <ul class="platform">
+                <li>
+                    <div class="second">
+                        <div class="icon"></div>
+                        <div class="medal">
+                            <img src="./images/medal_second.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+                        </div>
+                        <div class="flag"></div>
+                        <div class="title text">广州传祺旗舰司法解释</div>
+                        <div class="members text">10.5W 发帖</div>
                     </div>
-                    <div class="flag"></div>
-                    <div class="title text">广州传祺旗舰司法解释</div>
-                    <div class="members text">10.5W 发帖</div>
-                </div>
-            </li>
-            <li>
-                <div class="first">
-                    <div class="icon"></div>
-                    <div class="medal">
-                        <img src="./medal.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+                </li>
+                <li>
+                    <div class="first">
+                        <div class="icon"></div>
+                        <div class="medal">
+                            <img src="./images/medal.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+                        </div>
+                        <div class="flag"></div>
+                        <div class="title text">深圳传祺旗舰司法解释</div>
+                        <div class="members text">120.2W 发帖</div>
                     </div>
-                    <div class="flag"></div>
-                    <div class="title text">深圳传祺旗舰司法解释</div>
-                    <div class="members text">120.2W 发帖</div>
-                </div>
-            </li>
-            <li>
-                <div class="third">
-                    <div class="icon"></div>
-                    <div class="medal">
-                        <img src="./medal_third.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+                </li>
+                <li>
+                    <div class="third">
+                        <div class="icon"></div>
+                        <div class="medal">
+                            <img src="./images/medal_third.png" alt="" style="width: 100%;background-color: rgba(255, 255, 255, 0);">
+                        </div>
+                        <div class="flag"></div>
+                        <div class="title text">北京传祺2店</div>
+                        <div class="members text">10.4W 发帖</div>
                     </div>
-                    <div class="flag"></div>
-                    <div class="title text">北京传祺2店</div>
-                    <div class="members text">10.4W 发帖</div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="scroll">
+            <div class="cell">
+                <div class="num text">4</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">广汽传祺东台和泰店</div>
+                <div class="hotdegree text">10.1W 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">5</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">上海传祺1店</div>
+                <div class="hotdegree text">9999 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">6</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">深圳传祺1店</div>
+                <div class="hotdegree text">8888 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">7</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">广汽传祺大庆众冠</div>
+                <div class="hotdegree text">8866 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">8</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">广汽基祺</div>
+                <div class="hotdegree text">8855 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">9</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">广州传祺1店</div>
+                <div class="hotdegree text">7777 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">10</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">贵阳广瑞通</div>
+                <div class="hotdegree text">6666 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">11</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">高碑店恒扬</div>
+                <div class="hotdegree text">5555 发帖</div>
+            </div>
+            <div class="cell">
+                <div class="num text">12</div>
+                <div class="icon"><img src="./images/4s_shop.jpg" alt="" style="width: 100%;"></div>
+                <div class="shopname text">常州新北传祺1店</div>
+                <div class="hotdegree text">5223 发帖</div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        console.log('2233');
+        function logScroll(e) {
+            console.log('Scroll Position: ${e.target.scrollTop}');
+            // console.log('eeee');
+        }
+    
+        function clickd() {
+            console.log('click');
+        }
+    </script>
 </body>
 </html>
