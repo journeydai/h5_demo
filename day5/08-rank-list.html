@@ -12,18 +12,21 @@
         <button class="back" onclick="clickd()"></button>
         城市圈排行
     </div>
-    <div class="header">
-        <div class="left normal">
+    <div class="header transparent">
+        <div class="left normal" id="1" onclick="switchTab('1')">
             粉丝数
         </div>
-        <div class="mid selected">
+        <div class="selected" id="2" onclick="switchTab('2')">
             发帖数
         </div>
-        <div class="right normal">
+        <div class="right normal" id="3" onclick="switchTab('3')">
             活动数
         </div>
     </div>
     <div class="container">
+        <div class="bg">
+            <img src="./images/background.png" alt="">
+        </div>
         <div class="top-three">
             <ul class="platform">
                 <li>
@@ -123,9 +126,34 @@
         console.log('2233');
         const container = document.querySelector('.container');
         container.onscroll = logScroll;
+        // 监听滚动 改变header背景透明度
         function logScroll(e) {
             console.log(`Scroll Position: ${e.target.scrollTop}`);
-            // console.log('eeee');
+            const header = document.querySelector('.header');
+            if (e.target.scrollTop > 0) {
+                header.className = "header";
+            } else {
+                header.className = "header transparent";
+            }
+        }
+
+        // 切换头部tab事件
+        function switchTab(id) {
+            let ids = ['1', '2', '3'];
+            for (index in ids) {
+                let value = ids[index];
+                var str = '';
+                if (value == '1') {
+                    str = 'left';
+                } else if (value == '3') {
+                    str = 'right';
+                }
+                if (value == id) {
+                    document.getElementById(value).className = `${str} selected`;
+                } else {
+                    document.getElementById(value).className = `${str} normal`;
+                }
+            }
         }
     
         function clickd() {

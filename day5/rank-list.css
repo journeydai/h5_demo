@@ -6,9 +6,12 @@
     background-color: #fff;
 }
 
+.transparent {
+    background-color: rgba(255, 255, 255, 0);
+}
+
 body {
-    background-image: url(./images/background.png);
-    background-size: 89.5%;
+    overflow-y: hidden;
 }
 
 .nav {
@@ -41,7 +44,6 @@ body {
     width: 100%;
     height: 48px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0);
 }
 
 .header div {
@@ -83,17 +85,26 @@ body {
     display: block;
     margin: 0 auto;
     border-radius: 3px;
-    transform: translateY(-4px);
+    transform: translateY(-3px);
 }
 
 .container {
-    margin-top: 88px;
+    position: relative;
+    margin-top: 44px;
     overflow: scroll;
-    height: calc(100vh - 88px);
-    background-image: url(./images/background.png);
-    background-size: 89.2%;
-    background-position: right top;
-    background-repeat: no-repeat;
+    width: 100%;
+    height: calc(100vh - 44px);
+}
+
+.container .bg {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 89.2%;
+}
+
+.container .bg img {
+    width: 100%;
 }
 
 .container::before {
@@ -102,18 +113,20 @@ body {
 }
 
 .container .top-three {
-    margin-top: 110.5px;
+    position: absolute;
+    top: 154.5px;
     width: 100%;
     height: 249px;
     background-image: url(./images/top_three.png);
     background-size: 100% 249px;
     background-color: rgba(255, 255, 255, 0);
+    background-position: bottom;
 }
 
 .platform {
     float: left;
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     list-style: none;
     background-color: rgba(255, 255, 255, 0);
 }
@@ -121,6 +134,8 @@ body {
 .platform li {
     float: left;
     width: 33.3%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .first, .second, .third {
@@ -280,9 +295,11 @@ body {
 }
 
 .scroll {
+    position: absolute;
     overflow: hidden;
     padding-top: 20px;
-    margin-top: -28.5px;
+    /* margin-top: -28.5px; */
+    top: 374.5px;
     width: 100%;
     /* height: 600px; */
     /* background-color: aqua; */
