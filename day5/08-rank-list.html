@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./rank-list.css">
 </head>
-<body onscroll="logScroll()">
+<body>
     <div class="nav">
         <button class="back" onclick="clickd()"></button>
         城市圈排行
@@ -23,7 +23,7 @@
             活动数
         </div>
     </div>
-    <div class="container">
+    <div class="container" onscroll="logScroll(this)">
         <div class="top-three">
             <ul class="platform">
                 <li>
@@ -122,7 +122,7 @@
     <script>
         console.log('2233');
         function logScroll(e) {
-            console.log('Scroll Position: ${e.target.scrollTop}');
+            console.log(`Scroll Position: ${e.target.scrollTop}`);
             // console.log('eeee');
         }
     

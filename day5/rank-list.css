@@ -88,7 +88,8 @@ body {
 
 .container {
     margin-top: 88px;
-    /* height: calc(100vh - 88px); */
+    overflow: scroll;
+    height: calc(100vh - 88px);
     background-image: url(./images/background.png);
     background-size: 89.2%;
     background-position: right top;
