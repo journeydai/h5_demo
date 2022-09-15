@@ -23,7 +23,7 @@
             活动数
         </div>
     </div>
-    <div class="container" onscroll="logScroll(this)">
+    <div class="container">
         <div class="top-three">
             <ul class="platform">
                 <li>
@@ -121,6 +121,8 @@
 
     <script>
         console.log('2233');
+        const container = document.querySelector('.container');
+        container.onscroll = logScroll;
         function logScroll(e) {
             console.log(`Scroll Position: ${e.target.scrollTop}`);
             // console.log('eeee');
