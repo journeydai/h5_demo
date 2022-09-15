@@ -12,6 +12,31 @@
             font-family: sans-serif;
         }
 
+        .nav {
+            position: relative;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: 44px;
+            color: #000;
+            font-weight: 500;
+            font-size: 17px;
+            text-align: center;
+            line-height: 44px;
+        }
+
+        .back {
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            border: 0;
+            width: 24px;
+            height: 24px;
+            background-image: url(./images/back.png);
+            background-size: 100%;
+            background-color: #fff;
+        }
+
         div {
             height: 78px;
             width: 100%;
@@ -32,21 +57,14 @@
             float: left;
             margin-top: 20px;
             margin-left: 40px;
+            overflow: hidden;
             width: 20px;
             height: 20px;
             border-radius: 3px;
         }
 
-        .icon1 {
-            background-color: aqua;
-        }
-
-        .icon2 {
-            background-color: blue;
-        }
-
-        .icon3 {
-            background-color: pink;
+        .icon img {
+            width: 100%;
         }
 
         .description {
@@ -70,8 +88,9 @@
             width: 16px;
             height: 16px;
             display: block;
-            background-image: url(./icon-arrow_right.png);
+            background-image: url(./images/icon-arrow_right.png);
             background-size: 100% 100%;
+            background-position: center 1.5px;
         }
 
         .list .arrow {
@@ -90,18 +109,28 @@
     </style>
 </head>
 <body>
+    <div class="nav">
+        <button class="back"></button>
+        App角色描述
+    </div>
     <div class="list">
-        <div class="icon icon1"></div>
+        <div class="icon">
+            <img src="./images/logo1.png" alt="">
+        </div>
         <h2 class="title">传祺官方</h2>
         <p class="description">传祺APP社区官方角色</p>
     </div>
     <div class="list">
-        <div class="icon icon2"></div>
+        <div class="icon">
+            <img src="./images/logo2.png" alt="">
+        </div>
         <h2 class="title">认证车主</h2>
         <p class="description">对应车型传祺车主</p>
     </div>
     <div class="list">
-        <div class="icon icon3"></div>
+        <div class="icon">
+            <img src="./images/logo3.png" alt="">
+        </div>
         <h2 class="title">活动专属标记</h2>
         <p class="description">影豹圈#豹冲，向2022迸发#活动参与用</p>
         <button type="button" class="btn">
