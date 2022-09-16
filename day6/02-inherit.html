@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        // 类的继承
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            sum() {
+                console.log(this.x + this.y);
+            }
+
+            money() {
+                console.log(100);
+            }
+        }
+        var that;
+        class Son extends Father {
+            constructor(x, y, name) {
+                super(x, y);    // 调用父类中的构造函数
+                that = this;
+                this.btn = document.querySelector('button');
+                this.btn.onclick = this.sing;
+                this.name = name;
+            }
+
+            sing() {
+                // 这里this指向调用者button
+                console.log(that.name);
+            }
+        }
+        var son = new Son(1, 2, 'J');
+        son.money();
+        son.sum();
+    </script>
+</body>
+</html>

@@ -112,6 +112,36 @@ body {
     display: table;
 }
 
+.container .switch {
+    position: absolute;
+    top: 64px;
+    left: 20px;
+    overflow: hidden; 
+    width: 96px;
+    height: 23.5px;
+    border-radius: 2px;
+}
+
+.container .switch div {
+    width: 48px;
+    height: 23.5px;
+    line-height: 23.5px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.container .switch .week {
+    float: left;
+    color: #999;
+    background-color: #f4f4f4;
+}
+
+.container .switch .total {
+    float: right;
+    color: #fff;
+    background-color: #25155D;
+}
+
 .container .top-three {
     position: absolute;
     top: 154.5px;
@@ -152,7 +182,6 @@ body {
 .platform .first .icon {
     width: 70px;
     height: 70px;
-    /* background-color: pink; */
     background-image: url(./images/first_shop.jpg);
     border: solid 2px #E3BE60;
 }
@@ -164,7 +193,9 @@ body {
 
 .platform .first .medal {
     top: -13px;
-    left: 17.5px;
+    /* left: 17.5px; */
+    left: 50%;
+    transform: translateX(-45px);
     width: 25px;
     height: 29px;
     background-color: rgba(255, 255, 255, 0);
@@ -172,7 +203,9 @@ body {
 
 .platform .second .medal {
     top: -6px;
-    left: 27px;
+    /* left: 27px; */
+    left: 50%;
+    transform: translateX(-40px);
     width: 23px;
     height: 27px;
 }
@@ -190,7 +223,9 @@ body {
 
 .platform .first .flag {
     top: 59px;
-    left: 16.5px;
+    /* left: 16.5px; */
+    left: 50%;
+    transform: translateX(-46px);
     width: 92px;
     height: 22px;
     background-image: url(./images/first_flag.png);
@@ -270,7 +305,9 @@ body {
 
 .platform .third .medal {
     top: -6px;
-    left: 27px;
+    /* left: 27px; */
+    left: 50%;
+    transform: translateX(-40px);
     width: 23px;
     height: 27px;
 }
