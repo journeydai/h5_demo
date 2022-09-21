@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+        // call 方法
+        function fn() {
+            console.log(this);
+        }
+
+        var o = {
+            name: 'jack'    
+        }
+        // 1. call 可以调用函数
+        // 2. call 可以改变函数的this指向 此时函数的this指向了o对象
+        // fn.call(o);
+
+        // 借用父构造函数继承属性
+        // 1. 父构造函数
+        function Father(uname, age) {
+            this.uname = uname;
+            this.age = age;
+        }
+        Father.prototype.money = function() {
+            console.log(10000);
+        }
+        // 2. 子构造函数
+        function Son(uname, age) {
+            // 此时父构造函数中的this指向子构造函数的对象实例this
+            Father.call(this, uname, age);
+        }
+        Son.prototype = Father.prototype;
+        var son = new Son('son', 20);
+        console.log(son);
+        son.money();
+    </script>
+ </body>
+ </html>

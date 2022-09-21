@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组遍历
+        var arr = [1, 2, 5];
+        var sum = 0;
+        arr.forEach(function(value, index, array) {
+            console.log('value' + value);
+            console.log('index' + index);
+            console.log('array' + array);
+            sum += value;
+        });
+        console.log('sum:' + sum);
+
+        // filter
+        var arr1 = [22, 33, 4, 5, 99];
+        var filteredArray = arr1.filter(function(value, index) {
+            return value > 20;
+        });
+        console.log(filteredArray);
+        var newArr = arr1.filter(function(value, index) {
+            return value % 2 === 0;
+        });
+        console.log(newArr);
+        var str1 = 'ss';
+        var str2 = 'ss';
+        console.dir(str1);
+        console.dir(str2);
+        console.log(str1 === str2);
+
+        // some
+        var arr2 = [2, 11, 20, 39];
+        var flag = arr2.some(function(value) {
+            return value > 40;
+        });
+        console.log(flag);
+        var strArr = ['ss', 'aa', '22', 'pink'];
+        var flag1 = strArr.some(function(value) {
+            return value == 'pink';
+        });
+        console.log(flag1);
+    </script>
+</body>
+</html>

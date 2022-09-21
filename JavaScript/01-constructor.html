@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 利用 new Object() 创建对象
+        var obj1 = new Object();
+        // 2. 利用字面量创建对象
+        var obj2 = {};
+        // 3. 利用构造函数创建对象
+        function Student(uname, age) {
+            this.uname = uname;
+            this.age = age;
+            // this.sing = function() {
+            //     console.log('hello');
+            // }
+        }
+        // Student.prototype.sing = function() {
+        //     console.log('hello');
+        // }
+        // Student.sex = '男';
+        // console.log(Student);
+        // var xm = new Student('小明', 12);
+        // var xh = new Student('小红', 11);
+        // xm.sing();
+        // console.log(xm.__proto__);
+        // Student.prototype.score = function() {
+        //     console.log('100');
+        // }
+        // xm.score();
+        // console.log(xm.__proto__);
+
+        Array.prototype.sum = function() {
+            var sum = 0;
+            for (var i = 0; i < this.length; i++) {
+                sum += this[i];
+            }
+            return sum;
+        }
+        var arr = [1, 2 ,3];
+        console.log(arr);
+        var arr1 = new Array(11, 22 ,33);
+        console.log(arr1.sum());
+        console.log(Array.prototype);
+        // arr.count = function() {
+        //     return this.length;
+        // }
+        // console.log(arr.count());
+    </script>
+</body>
+</html>
