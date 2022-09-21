@@ -29,7 +29,7 @@
                 <key>metadata</key>
                 <dict>
                     <key>bundle-identifier</key>
-                    <string>cn.changanford.quickwin</string>
+                    <string>com.souche.app.oem.markethelper</string>
                     <key>bundle-version</key>
                     <string>1.0.6</string>
                     <key>kind</key>
