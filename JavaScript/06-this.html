@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 改变函数内this指向 call() apply() bind()
+        // 1. call()
+        var o = {
+            name: 'andy'
+        }; 
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        fn.call(o, 1, 3);
+        // call 调用函数 改变函数内this指向
+        // call 的主要作用可以实现继承
+        function Father(uname, age) {
+            this.uname = uname;
+            this.age = age;
+        }
+        Father.prototype.money = function() {
+            console.log(99999);
+        }
+
+        function Son(uname, age) {
+            // 改变Father函数内this指向实现属性继承
+            Father.call(this, uname, age);
+        }
+
+        // 通过将Son构造函数的原型对象指向Father构造函数的实例对象来实现继承，这样对Son的原型对象扩展函数不会影响Father构造函数
+        Son.prototype = new Father();
+        // Son构造函数的原型对象需指向自己的constructor
+        Son.prototype.constructor = Son;
+        var son = new Son('小明', 19);
+        console.log(son);
+        console.log(Son.prototype);
+        // 继承函数
+        // son.__proto__ = Father.prototype;
+        son.money();
+        Son.prototype.sing = function() {
+            console.log('i can sing');
+        }
+        console.log(Father.prototype);
+
+        // 2.apply 应用
+        var obj = {
+            name: 'andy'
+        };
+
+        function fn() {
+            console.log(this);
+        }
+        fn.apply(obj);
+    </script>
+</body>
+</html>

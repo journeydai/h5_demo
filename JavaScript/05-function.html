@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 函数声明方式function关键字
+        function fn() {}
+        // 2. 函数表达式（匿名函数）
+        var fun = function () {
+            console.log('1122');
+        }
+
+        // console.log(fun);
+        // console.log(fun instanceof Object);
+        // // fun();
+        // // 3. new Function()
+        // var fun1 = new Function('a', 'b', 'console.log(a + b)');
+        // fun1(1, 2);
+        // console.log(fun1);
+        // console.dir(fun1);
+        // 定时器
+        setInterval(function() {
+            console.log('22');
+        }, 1000);
+
+        // 立即执行函数
+        (function() {
+            console.log('立即执行函数的this' + this);
+        })();
+    </script>
+</body>
+</html>
