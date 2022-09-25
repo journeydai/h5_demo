@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let 关键字声明一个块级作用域的局部变量 var 不具备块级作用域的特性
+        // 防止循环变量变成全局变量 for (let i = 0; i < 3; i++) {}
+        if (true) {
+            let num = 1;
+            var a = 3;
+        }
+        console.log(a);
+        // console.log(num);
+
+        // let 关键字声明的变量没有变量提升(变量可以先使用再声明，变量提升只提升声明，不提升初始化)
+        // console.log(b);
+        let b = 11;
+        console.log(this.a);
+    </script>
+</body>
+</html>
