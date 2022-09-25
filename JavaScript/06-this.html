@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <button>点击</button>
     <script>
         // 改变函数内this指向 call() apply() bind()
         // 1. call()
@@ -57,7 +58,37 @@
         function fn() {
             console.log(this);
         }
-        fn.apply(obj);
+        fn.apply(obj, ['pink']);
+        // 1.调用函数 改变函数内部this指向
+        // 2.参数必须是数组（伪数组）
+        // 3.apply的主要应用 借助于数学内置对象求最大值
+        var arr = [11, 22, 33, 9, 66];
+        // var max = Math.max.apply(Math, arr);
+        // var max = Math.max(11, 22, 33);
+        // console.log(max);
+
+        // 3.bind 绑定
+        var obj1 = {
+            name: 'jack'
+        };
+        function fn1(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        var f = fn1.bind(obj1, 1, 5);
+        f();
+        // 1.不调用函数 可以改变函数内部this指向
+        // 2.返回原函数改变this指向后的新函数
+        // 3.如果有的函数我们不需要立即执行，但是又想改变函数内部this指向，此时用bind
+        // 4.比如有个按钮，点击后禁用，三秒后解除禁用
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            this.disabled = true;
+            setTimeout(function() {
+                console.log('sss');
+                this.disabled = false;  // 定时器中this指向window，这里需通过绑定改变this指向btn
+            }.bind(this), 3000);
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>西瓜</li>
+        <li>榴莲</li>
+        <li>橘子</li>
+        <li>西红柿</li>
+        <li>黄瓜</li>
+    </ul>
+    <script>
+        // 闭包 closure 能够访问另一个函数作用域中变量的函数
+        // function fun() {
+        //     var num = 11;
+        //     return function() {
+        //         console.log(num);
+        //     }
+        // }
+        // var fn = fun();
+        // fn();
+
+        // 闭包应用-点击li输出对应索引
+        // 1.利用动态添加属性的方式
+        var lis = document.querySelectorAll('li');
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].index = i;
+        //     lis[i].onclick = function() {
+        //         console.log(this.index);
+        //     }
+        // }
+        
+        
+        // for (var i = 0; i < lis.length; i++) {
+        //     (function(i) {
+        //         lis[i].onclick = function() {
+        //             console.log(i);
+        //         }
+        //     })(i);
+        // }
+
+        // 2.闭包应用-3秒后打印li中元素内容
+        for (var i = 0; i < lis.length; i++) {
+            (function(i) {
+                setTimeout(function() {
+                    console.log(lis[i].innerHTML);
+                }, 3000);
+            })(i);
+        }
+
+        // 3.闭包应用-计算打车价格
+        // 打车起步价13（3公里内），之后每一公里5块钱，用户输入公里数就可以计算打车价格
+        // 如果有拥堵情况，总价格多收取10元拥堵费
+        var taxi = (function() {
+            var start = 13; // 起步价13
+            var total = 0;  // 总价
+            return {
+                price: function(mile) {
+                    if (mile <= 3) {
+                        total = start;
+                    } else {
+                        total = start + (mile - 3) * 5;
+                    }
+                    return total;
+                },
+                // 拥堵费用计算
+                congestion: function(flag) {
+                    return flag ? total + 10 : total;
+                }
+            };
+        })();
+        var price = taxi.price(33);
+        console.log(price);
+        console.log(taxi.congestion(true));
+
+        var name = 'The Window';
+        var object = {
+            name: 'The Object',
+            getNameFunc: function() {
+                var that = this;
+                return function() {
+                    return that.name;
+                }
+            }
+        };
+        console.log(object.getNameFunc());
+
+        // 闭包是由函数以及声明该函数的词法环境(lexical environment)组合而成
+        function makeFunc() {
+            var name = 'xm';
+            var title = 'sss';
+            return function() {
+                console.log(name);
+            }
+        }
+        // 函数实例 func 维持了一个对它的词法环境(变量name存在于其中)的引用
+        // 当func被调用时，name仍然可用
+        var func = makeFunc();
+        func();
+
+        function makeAdder(x) {
+            return function(y) {
+                return x + y;
+            }
+        }
+        var add5 = makeAdder(5);
+        var add9 = makeAdder(9);
+        console.log(add5(3));
+        console.log(add9(6));
+    </script>
+</body>
+</html>

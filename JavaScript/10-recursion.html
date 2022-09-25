@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data = [{
+            id: 1,
+            name: '家电',
+            goods: [{
+                id: 11,
+                name: '冰箱',
+                goods: [{
+                    id: 111,
+                    name: '海尔'
+                }, {
+                    id: 112,
+                    name: 'TCL'
+                }]
+            }, {
+                id: 12,
+                name: '洗衣机'
+            }]
+        }, {
+            id: 2,
+            name: '服饰'
+        }];
+
+        function goodsById(json, id) {
+            var tt;
+            json.forEach(function(item) {
+                if (item.id == id) {
+                    tt = item;
+                } else if (item.goods && item.goods.length > 0) {
+                    tt = goodsById(item.goods, id);
+                }
+            });
+            return tt;
+        }
+        console.log(goodsById(data, 111));
+
+
+        var obj = {
+            name: 'xs',
+            age: 18,
+            msg: {
+                score: 100
+            },
+            color: ['pink', 'blue']
+        };
+        var o = {};
+        // Object.assign(o, obj);
+        // o.msg.score = 90;
+        // o.color[1] = 'orange';
+        // console.log(o);
+        // console.log(obj);
+
+        function deepCopy(newObj, oldObj) {
+            for (var k in oldObj) {
+                // 获取属性值
+                var value = oldObj[k];
+                // 值是否是数组类型
+                if (value instanceof Array) {
+                    newObj[k] = [];
+                    deepCopy(newObj[k], value);
+                } else if (value instanceof Object) {
+                    newObj[k] = {};
+                    deepCopy(newObj[k], value);
+                } else {
+                    // 简单数据类型
+                    newObj[k] = value;
+                }
+            }
+        }
+
+        // deepCopy(o, obj);
+        // o.msg.score = 90;
+        // o.color[1] = 'orange';
+        // console.log(o);
+        // console.log(obj);
+
+        var reg = /^[a-z0-9_-]$/;
+        console.log(reg.test('a_9'));
+    </script>
+</body>
+</html>

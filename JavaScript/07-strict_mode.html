@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 为整个脚本开启严格模式 -->
+    <script>
+        'use strict';
+        // 以下js代码会按照严格模式执行代码
+        // 1.变量名必须先声明再使用
+        // 2.不能随意删除已经声明好的变量
+        // 3.严格模式下全局作用域中函数中this指向 undefined
+        // 4.严格模式下，如果构造函数不加new调用，this会报错
+        // function Star() {
+        //     this.age = 11
+        // }
+        // var xm = new Star();
+        // console.log(xm.age);
+        // 5.严格模式下，定时器的this还是指向window
+        setTimeout(function() {
+            console.log(this);
+        }, 1000);
+        // 6.事件 对象还是指向调用者
+        // 7.参数不可重名
+        // function fn(a, a) {
+        //     console.log(a + a);
+        // }
+        // fn(2, 3);
+        // 8.禁止在非函数的代码块中声明函数
+        // if (i == 1) {
+        //     function fn() {}
+        // }
+    </script>
+    <script>
+        (function() {
+            'use strict'; 
+        })();
+    </script>
+    <!-- 为某个函数开启严格模式 -->
+    <script>
+        // 只为fn函数开启严格模式
+        function fn() {
+            'use strict';
+            // 下面的代码按照严格模式执行
+
+        }
+        function fun() {
+            // 下面的代码还是按照普通模式执行
+
+        }
+    </script>
+</body>
+</html>
