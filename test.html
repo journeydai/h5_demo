@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+    .box {
+        width: 100%;
+        height: 100vh;
+        /* background-color: aqua; */
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .start {
+        align-self: flex-start;
+        width: 100%;
+        height: 1200px;
+        background-color: blue;
+    }
+    .end {
+        align-self: flex-end;
+        width: 100%;
+        height: 80px;
+        background-color: black;
+        margin-bottom: 80px;
+    }
+</style>
+</head>
+<body>
+    <div class="box">
+        <div class="start"></div>
+        <div class="end"></div>
+        <input type="button" value="call native">
+    </div>
+</body>
+<script>
+let isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1;
+//这是必须要写的，用来创建一些设置
+function setupWebViewJavascriptBridge(callback) {
+  //Android使用
+  if (isAndroid) {
+    if (window.WebViewJavascriptBridge) {
+      callback(WebViewJavascriptBridge)
+    } else {
+      document.addEventListener(
+        'WebViewJavascriptBridgeReady',
+        function () {
+          callback(WebViewJavascriptBridge)
+        },
+        false
+      );
+    }
+    sessionStorage.phoneType = 'android'
+  }
+
+  if (window.WVJBCallbacks) {
+    return window.WVJBCallbacks.push(callback);
+  }
+  window.WVJBCallbacks = [callback];
+  var WVJBIframe = document.createElement('iframe');
+  WVJBIframe.style.display = 'none';
+  WVJBIframe.src = 'https://__bridge_loaded__';
+  document.documentElement.appendChild(WVJBIframe);
+  setTimeout(function () {
+    document.documentElement.removeChild(WVJBIframe)
+  }, 0);
+  sessionStorage.phoneType = 'ios'
+}
+//注册回调函数，第一次连接时调用 初始化函数(android需要初始化,ios不用)
+setupWebViewJavascriptBridge(function (bridge) {
+  if (isAndroid) {
+    //初始化
+    bridge.init(function (message, responseCallback) {
+      var data = {
+        'Javascript Responds': 'Wee!'
+      };
+      responseCallback(data);
+    })
+  }
+})
+
+window.hcJsBridge = {
+    callHandler: callHandler,
+}
+
+// js调APP方法 （参数分别为:app提供的方法名  传给app的数据  回调）
+function callHandler(name, data, callback) {
+    setupWebViewJavascriptBridge(function (bridge) {
+      bridge.callHandler(name, data, callback)
+    })
+}
+
+window.MagicJSBridge = {
+    openLogin() {
+        try {
+            hcJsBridge.callHandler('magicBox.openLogin')
+        } catch (r) {
+            console.log('请在app上使用', r)
+        }
+    },
+    share(params) {
+        try {
+            hcJsBridge.callHandler('magicBox.share', params)
+        } catch (r) {
+            console.log('请在app上使用', r)
+        }
+    },
+    getAccessToken() {
+        return new Promise((resolve, reject) => {
+            hcJsBridge.callHandler('magicBox.getAccessToken', data, function (response) {
+                resolve(JSON.parse(response))
+            })
+        })
+    },
+    getSchemeAndLink() {
+        return new Promise((resolve, reject) => {
+            hcJsBridge.callHandler('magicBox.scheme', data, function (response) {
+                resolve(JSON.parse(response))
+            })
+        })
+    }
+}
+
+const button = document.querySelector("input")
+button.addEventListener("click", updateButton);
+
+function updateButton() {
+    MagicJSBridge.share()
+}
+</script>
+</html>
