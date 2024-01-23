@@ -100,6 +100,7 @@ window.MagicJSBridge = {
     },
     share(params) {
         try {
+            alert('112233')
             hcJsBridge.callHandler('magicBox.share', params)
         } catch (r) {
             console.log('请在app上使用', r)
