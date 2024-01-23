@@ -79,7 +79,7 @@ window.MagicJSBridge = {
     },
     getAccessToken() {
         return new Promise((resolve, reject) => {
-            hcJsBridge.callHandler('magicBox.getAccessToken', data, function (response) {
+            hcJsBridge.callHandler('magicBox.getAccessToken', {}, function (response) {
                 alert('112')
                 resolve(JSON.parse(response))
             })
@@ -87,7 +87,7 @@ window.MagicJSBridge = {
     },
     getSchemeAndLink() {
         return new Promise((resolve, reject) => {
-            hcJsBridge.callHandler('magicBox.scheme', data, function (response) {
+            hcJsBridge.callHandler('magicBox.scheme', {}, function (response) {
                 resolve(JSON.parse(response))
             })
         })
