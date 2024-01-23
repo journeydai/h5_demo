@@ -34,38 +34,11 @@
     </div>
 </body>
 <script>
-
-// window.hcJsBridge = {
-//     callHandler: callHandler,
-//     messageCallbacks: {},
-//     messageHandlers: {},
-// }
-// var uniqueId = 1;
-
-// function callHandler(name, data, responseCallback) {
-//     if (arguments.length == 2 && typeof data == 'function') {
-//         responseCallback = data;
-//         data = null;
-//     }
-//     var message = {name:name, data:data};
-//     if (responseCallback) {
-//         var callbackId = 'cb_'+(uniqueId++)+'_'+new Date().getTime();
-//         message["callbackId"] = callbackId;
-//         hcJsBridge.messageCallbacks[callbackId] = responseCallback;
-//     }
-//     var messageJson = JSON.stringify(message);
-//     if (typeof nativeBridgeHead === "undefined") {
-//         window.webkit.messageHandlers.handleMessage.postMessage(messageJson);
-//     } else {
-//         nativeBridgeHead.handleMessage(messageJson);
-//     }
-// }
-
-;(function() {
+(function() {
     if (window.hcJsBridge) {
         return;
     }
-
+    
     window.hcJsBridge = {
         callHandler: callHandler,
         registerHandler: registerHandler,
@@ -98,7 +71,7 @@
     function registerHandler(name, handler) {
         hcJsBridge.messageHandlers[name] = handler;
     }
-
+    
     function handleMessageFromNative(messageJSON) {
     
         var message = messageJSON;
@@ -139,7 +112,7 @@
             }
         }
     }
-
+    
     setTimeout(function () {
         try {
             if (typeof nativeBridgeHead === "undefined") {
