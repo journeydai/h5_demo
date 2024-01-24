@@ -138,7 +138,7 @@ window.MagicJSBridge = {
     share(params) {
         try {
             alert('112233')
-            hcJsBridge.callHandler('magicBox.share', params)
+            hcJsBridge.callHandler('webkit.openSystemAlbum', params)
         } catch (r) {
             console.log('请在app上使用', r)
         }
@@ -166,9 +166,10 @@ const button = document.querySelector("input")
 button.addEventListener("click", updateButton);
 
 function updateButton() {
-    MagicJSBridge.getAccessToken().then((value) => {
-        alert('111' + value.data.access_token)
-    })
+    // MagicJSBridge.getAccessToken().then((value) => {
+    //     alert('111' + value.data.access_token)
+    // })
+    MagicJSBridge.share({})
 }
 </script>
 </html>
