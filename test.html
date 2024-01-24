@@ -167,7 +167,7 @@ button.addEventListener("click", updateButton);
 
 function updateButton() {
     MagicJSBridge.getAccessToken().then((value) => {
-        alert('111' + value)
+        alert('111' + value.data.access_token)
     })
 }
 </script>
