@@ -127,6 +127,10 @@
     }, 0);
 })();
 
+hcJsBridge.registerHandler('onAppH5Pageshow', function () {
+  console.log('onAppH5Pageshow')
+})
+    
 window.MagicJSBridge = {
     openLogin() {
         try {
