@@ -148,7 +148,7 @@ window.MagicJSBridge = {
             hcJsBridge.callHandler('magicBox.getAccessToken', {}, function (response) {
                 let data = JSON.parse(response)
                 data.data.access_token = data.data.uuid
-                alert('222' + data.data.access_token)
+                alert(data)
                 resolve(JSON.parse(response))
             })
         })
