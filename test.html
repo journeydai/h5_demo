@@ -149,7 +149,7 @@ window.MagicJSBridge = {
                 let data = JSON.parse(response)
                 data.data.access_token = data.data.uuid
                 alert(data.statusCode)
-                resolve(JSON.parse(response))
+                resolve(data)
             })
         })
     },
