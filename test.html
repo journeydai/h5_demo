@@ -166,7 +166,9 @@ const button = document.querySelector("input")
 button.addEventListener("click", updateButton);
 
 function updateButton() {
-    MagicJSBridge.getAccessToken()
+    MagicJSBridge.getAccessToken().then((obj) => {
+        alert('111' + obj.data.access_token)
+    })
 }
 </script>
 </html>
