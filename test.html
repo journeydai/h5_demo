@@ -159,7 +159,8 @@ window.MagicJSBridge = {
     },
     getSchemeAndLink() {
         let params = new URLSearchParams(window.location.search)
-        let inviteUUID = params.uid.toString()
+        let inviteUUID = params.uid
+        alert(type of inviteUUID)
         let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox'
         return {
             link: link,
