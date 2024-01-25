@@ -71,6 +71,10 @@
     function registerHandler(name, handler) {
         hcJsBridge.messageHandlers[name] = handler;
     }
+
+    hcJsBridge.registerHandler('onAppH5Pageshow', function () {
+      alert('onAppH5Pageshow')
+    })
     
     function handleMessageFromNative(messageJSON) {
     
@@ -126,10 +130,6 @@
         }        
     }, 0);
 })();
-
-hcJsBridge.registerHandler('onAppH5Pageshow', function () {
-  alert('onAppH5Pageshow')
-})
     
 window.MagicJSBridge = {
     openLogin() {
