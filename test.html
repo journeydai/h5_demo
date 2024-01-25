@@ -160,8 +160,9 @@ window.MagicJSBridge = {
     getSchemeAndLink() {
         let params = new URLSearchParams(window.location.search)
         let inviteUUID = params.uuid
+        let actId = params.activity_id
         let redirectURL = window.location.protocol + '//' + window.location.host + window.location.pathname
-        let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index?' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox&actId=999' + '&redirect_url=' + encodeURIComponent(redirectURL)
+        let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index?' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox&actId=' + actId + '&redirect_url=' + encodeURIComponent(redirectURL)
         return {
             link: link,
             scheme: 'honda'
@@ -177,7 +178,7 @@ function updateButton() {
     //     alert('111' + value.data.access_token)
     // })
     let value = MagicJSBridge.getSchemeAndLink()
-    window.location = 'honda://'
+    alert('link' + value.link)
 }
 </script>
 </html>
