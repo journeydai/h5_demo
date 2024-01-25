@@ -160,7 +160,7 @@ window.MagicJSBridge = {
     getSchemeAndLink() {
         let params = new URLSearchParams(window.location.search)
         let inviteUUID = params.uuid
-        let redirectURL = encodeURIComponent(window.location.pathname)
+        let redirectURL = window.location.pathname
         let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index?' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox&actId=999' + '&redirect_url=' + redirectURL
         return {
             link: link,
