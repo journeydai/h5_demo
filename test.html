@@ -158,11 +158,14 @@ window.MagicJSBridge = {
         })
     },
     getSchemeAndLink() {
-        return new Promise((resolve, reject) => {
-            hcJsBridge.callHandler('magicBox.scheme', {}, function (response) {
-                resolve(JSON.parse(response))
-            })
-        })
+        let params = new URLSearchParams(window.location.search)
+        let inviteUUID = params.uuid
+        let redirectURL = encodeURIComponent(window.location.pathname)
+        let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index?' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox&actId=999' + '&redirect_url=' + redirectURL
+        return {
+            link: link,
+            scheme: 'honda'
+        }
     }
 }
 
@@ -173,7 +176,8 @@ function updateButton() {
     // MagicJSBridge.getAccessToken().then((value) => {
     //     alert('111' + value.data.access_token)
     // })
-    MagicJSBridge.openLogin()
+    let value = MagicJSBridge.getSchemeAndLink()
+    alert('alink ' + value.link)
 }
 </script>
 </html>
