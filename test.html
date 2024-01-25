@@ -72,8 +72,8 @@
         hcJsBridge.messageHandlers[name] = handler;
     }
 
-    hcJsBridge.registerHandler('onAppH5Pageshow', function () {
-      alert('onAppH5Pageshow')
+    hcJsBridge.registerHandler('onAppLoginSuccess', function () {
+      alert('onAppLoginSuccess')
     })
     
     function handleMessageFromNative(messageJSON) {
