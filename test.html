@@ -135,9 +135,7 @@ window.MagicJSBridge = {
     openLogin() {
         try {
             let params = {
-                data: {
-                    gotype: 'login'
-                }
+                gotype: 'login'
             }
             hcJsBridge.callHandler('webkit.showPage', params)
         } catch (r) {
