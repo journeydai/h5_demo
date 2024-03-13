@@ -134,7 +134,12 @@
 window.MagicJSBridge = {
     openLogin() {
         try {
-            hcJsBridge.callHandler('magicBox.openLogin')
+            let params = {
+                data: {
+                    gotype: 'login'
+                }
+            }
+            hcJsBridge.callHandler('webkit.showPage', params)
         } catch (r) {
             console.log('请在app上使用', r)
         }
