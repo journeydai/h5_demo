@@ -75,6 +75,10 @@
     hcJsBridge.registerHandler('onAppLoginSuccess', function () {
       alert('onAppLoginSuccess')
     })
+
+    hcJsBridge.registerHandler('onAppH5Pagehide', function () {
+      alert('onAppH5Pagehide')
+    })
     
     function handleMessageFromNative(messageJSON) {
     
@@ -137,7 +141,9 @@ window.MagicJSBridge = {
             let params = {
                 gotype: 'login'
             }
-            hcJsBridge.callHandler('webkit.showPage', params)
+            hcJsBridge.callHandler('webkit.showPage', params, function (response) {
+                
+            })
         } catch (r) {
             console.log('请在app上使用', r)
         }
