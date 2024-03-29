@@ -162,8 +162,11 @@ window.MagicJSBridge = {
     },
     share(params) {
         try {
-            alert('112233')
-            hcJsBridge.callHandler('webkit.openSystemAlbum', params)
+            return new Promise((resolve, reject) => {
+                hcJsBridge.callHandler('webkit.openSystemAlbum', {}, function (response) {
+                    resolve(JSON.parse(response))
+                })
+            })
         } catch (r) {
             console.log('请在app上使用', r)
         }
@@ -199,7 +202,7 @@ function updateButton() {
     // })
     // let value = MagicJSBridge.getSchemeAndLink()
     // alert('link' + value.link)
-    MagicJSBridge.openLogin()
+    MagicJSBridge.share({})
 }
 </script>
 </html>
