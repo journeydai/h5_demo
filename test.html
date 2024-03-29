@@ -163,7 +163,7 @@ window.MagicJSBridge = {
     share(params) {
         try {
             return new Promise((resolve, reject) => {
-                hcJsBridge.callHandler('webkit.setJsShare', {}, function (response) {
+                hcJsBridge.callHandler('webkit.setJsShare', params, function (response) {
                     resolve(JSON.parse(response))
                 })
             })
@@ -202,7 +202,20 @@ function updateButton() {
     // })
     // let value = MagicJSBridge.getSchemeAndLink()
     // alert('link' + value.link)
-    MagicJSBridge.share({})
+    let params = {
+        title: '一个分享',
+        content: '分享的内容112233',
+        request: {
+            requestParam: {
+                type: '3020',
+                gotype: 'webview',
+                id: '全新CRV'
+            },
+            appname: 'H5CarSeriesDetail',
+            nativePage: '0'
+        }
+    }
+    MagicJSBridge.share(params)
 }
 </script>
 </html>
