@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+    .box {
+        width: 100%;
+        height: 80px;
+        /* background-color: aqua; */
+        display: flex;
+        flex-flow: row wrap;
+    }
+    /* .start {
+        align-self: flex-start;
+        width: 100%;
+        height: 1200px;
+        background-color: blue;
+    }
+    .end {
+        align-self: flex-end;
+        width: 100%;
+        height: 80px;
+        background-color: black;
+        margin-bottom: 80px;
+    } */
+</style>
+</head>
+<body>
+    <div class="box">
+        <input type="button" id="share" value="分享">
+        <input type="button" id="share" value="分享" onclick="click">
+        <input type="button" id="share" value="分享" onclick="click">
+        <input type="button" id="share" value="分享" onclick="click">
+        <input type="button" id="share" value="分享" onclick="click">
+    </div>
+</body>
+<script>
+(function() {
+    if (window.hcJsBridge) {
+        return;
+    }
+    
+    window.hcJsBridge = {
+        callHandler: callHandler,
+        registerHandler: registerHandler,
+        handleMessageFromNative: handleMessageFromNative,
+        messageHandlers: {},
+        messageCallbacks: {},
+        ok:false,
+    };
+    var uniqueId = 1;
+    
+    function callHandler(name, data, responseCallback) {
+        if (arguments.length == 2 && typeof data == 'function') {
+            responseCallback = data;
+            data = null;
+        }
+        var message = {name:name, data:data};
+        if (responseCallback) {
+            var callbackId = 'cb_'+(uniqueId++)+'_'+new Date().getTime();
+            message["callbackId"] = callbackId;
+            hcJsBridge.messageCallbacks[callbackId] = responseCallback;
+        }
+        var messageJson = JSON.stringify(message);
+        if (typeof nativeBridgeHead === "undefined") {
+            window.webkit.messageHandlers.handleMessage.postMessage(messageJson);
+        } else {
+            nativeBridgeHead.handleMessage(messageJson);
+        }
+    }
+    
+    function registerHandler(name, handler) {
+        hcJsBridge.messageHandlers[name] = handler;
+    }
+
+    hcJsBridge.registerHandler('onAppLoginSuccess', function () {
+      alert('onAppLoginSuccess')
+    })
+
+    hcJsBridge.registerHandler('onAppH5Pagehide', function () {
+      alert('onAppH5Pagehide')
+    })
+    
+    function handleMessageFromNative(messageJSON) {
+    
+        var message = messageJSON;
+        if (typeof message != "object") {
+            message = JSON.parse(unescape(messageJSON));
+        }
+        var responseId = message["responseId"];
+        if (responseId) {
+            var responseData = message["responseData"];
+            var callback = hcJsBridge.messageCallbacks[responseId];
+            callback(responseData);
+        } else {
+            var messageName = message["name"];
+            var messageData = message["data"];
+            var messageCallbackId = message["callbackId"];
+    
+            var handler = hcJsBridge.messageHandlers[messageName];
+            if (typeof handler === "undefined") {
+                console.warn(message);
+                return;
+            }
+            var responseCallback = function(data) {
+                var responseMessage = {
+                    responseId: messageCallbackId,
+                    responseData: data
+                };
+                var responseMessageJson = JSON.stringify(responseMessage);
+                if (typeof nativeBridgeHead === "undefined") {
+                    window.webkit.messageHandlers.handleResponseMessage.postMessage(responseMessageJson);
+                } else {
+                    nativeBridgeHead.handleResponseMessage(responseMessageJson);
+                }
+            };
+            try {
+                handler(messageData, responseCallback);
+            } catch (e) {
+                console.warn(e,message);
+            }
+        }
+    }
+    
+    setTimeout(function () {
+        try {
+            if (typeof nativeBridgeHead === "undefined") {
+                window.webkit.messageHandlers.handleStartupMessage.postMessage("");
+            } else {
+                nativeBridgeHead.handleStartupMessage();
+            }
+            hcJsBridge.ok = true;
+        } catch (e) {
+            console.warn(e);
+        }        
+    }, 0);
+})();
+    
+window.MagicJSBridge = {
+    openLogin() {
+        try {
+            let params = {
+                gotype: 'login'        // 此处为打开授权登录页示例
+            }
+            return new Promise((resolve, reject) => {
+                hcJsBridge.callHandler('webkit.showPage', params, function (response) {
+                    resolve(JSON.parse(response))
+                })
+            })
+        } catch (r) {
+            console.log('请在app上使用', r)
+        }
+    },
+    share(params) {
+        try {
+            return new Promise((resolve, reject) => {
+                hcJsBridge.callHandler('webkit.setJsShare', params, function (response) {
+                    resolve(JSON.parse(response))
+                })
+            })
+        } catch (r) {
+            console.log('请在app上使用', r)
+        }
+    },
+    getAccessToken() {
+        return new Promise((resolve, reject) => {
+            hcJsBridge.callHandler('magicBox.getAccessToken', {}, function (response) {
+                let data = JSON.parse(response)
+                data.data.access_token = data.data.uuid
+                alert(data.statusCode)
+                resolve(data)
+            })
+        })
+    },
+    getSchemeAndLink() {
+        let params = new URLSearchParams(window.location.search)
+        let inviteUUID = params.get('uid')
+        alert(inviteUUID)
+        let link = 'https://h5test.dongfeng-honda.com/register/pages/register/activeLogin/index' + window.location.search + '&inviteUuid=' + inviteUUID + '&from=magicBox&code=magicBox'
+        return {
+            link: link,
+            scheme: 'honda'
+        }
+    }
+}
+
+window.onload = function() {
+    document.getElementById('share').onclick = share;
+}
+
+function share() {
+    let params = {
+        title: '一个分享',
+        content: '分享的内容112233',
+        thumbnail: 'https://file.dongfeng-honda.com/honda/img_share_default.png?v=1.1',
+        request: {
+            requestParam: '{"type":"3020","gotype":"webview","id":"全新CR-V"}',
+            nativePage: '0',
+            loginAuth: '0',
+            appName: 'H5CarSeriesDetail',
+            loginAuth: '0'
+        }
+    }
+    MagicJSBridge.share(params)
+}
+
+function callPhone() {
+    hcJsBridge.callHandler('webkit.MultiPhoneCall', '15071055082', function (response) {
+        
+    })
+}
+
+</script>
+</html>
