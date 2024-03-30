@@ -34,7 +34,7 @@
     <div class="box">
         <input type="button" id="share" value="分享">
         <input type="button" id="call" value="拨打电话">
-        <input type="button" id="share" value="分享" onclick="click">
+        <input type="button" id="location" value="定位">
         <input type="button" id="share" value="分享" onclick="click">
         <input type="button" id="share" value="分享" onclick="click">
     </div>
@@ -192,6 +192,7 @@ window.MagicJSBridge = {
 window.onload = function() {
     document.getElementById('share').onclick = share;
     document.getElementById('call').onclick = callPhone;
+    document.getElementById('location').onclick = getLocation;
 }
 
 function share() {
@@ -213,6 +214,14 @@ function share() {
 function callPhone() {
     hcJsBridge.callHandler('webkit.callPhone', '15071055082', function (response) {
         
+    })
+}
+
+function getLocation() {
+    return new Promise((resolve, reject) => {
+        hcJsBridge.callHandler('webkit.getLocationInfo', {}, function (response) {
+            alert(response)
+        })
     })
 }
 
