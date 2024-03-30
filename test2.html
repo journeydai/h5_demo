@@ -29,7 +29,7 @@
 <body>
     <div class="box">
         <input type="button" id="share" value="分享">
-        <input type="button" id="share" value="分享" onclick="click">
+        <input type="button" id="call" value="拨打电话">
         <input type="button" id="share" value="分享" onclick="click">
         <input type="button" id="share" value="分享" onclick="click">
         <input type="button" id="share" value="分享" onclick="click">
@@ -187,6 +187,7 @@ window.MagicJSBridge = {
 
 window.onload = function() {
     document.getElementById('share').onclick = share;
+    document.getElementById('call').onclick = callPhone;
 }
 
 function share() {
