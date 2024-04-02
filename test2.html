@@ -38,6 +38,7 @@
         <input type="button" id="userInfo" value="用户信息">
 <!--         <input type="button" id="share" value="分享" onclick="click"> -->
     </div>
+    <div id="txt" value="一段文本"></div>
 </body>
 <script>
 (function() {
@@ -228,6 +229,7 @@ function getLocation() {
                 alert(resp.msg || 'getLocationInfo error')
             }
             alert(response)
+            document.getElementById('txt').value = resp.city
         })
     })
 }
@@ -236,11 +238,13 @@ function getUserInfo() {
     return new Promise((resolve, reject) => {
         hcJsBridge.callHandler('webkit.getAppUserInfo', {}, function (response) {
             // resolve(JSON.parse(response))
+            const resp = JSON.parse(response)
             if ( JSON.parse(response).stateCode == '-1' ||
                  JSON.parse(response).stateCode == -1) {
                 alert(response.msg)
             }
             alert(response)
+            document.getElementById('txt').value = resp.uuid
         })
     })
 }
