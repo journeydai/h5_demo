@@ -229,7 +229,7 @@ function getLocation() {
                 alert(resp.msg || 'getLocationInfo error')
             }
             alert(response)
-            document.getElementById('txt').innerHTML = response.data.city
+            document.getElementById('txt').innerHTML = resp.data.city
         })
     })
 }
