@@ -38,7 +38,7 @@
         <input type="button" id="userInfo" value="用户信息">
 <!--         <input type="button" id="share" value="分享" onclick="click"> -->
     </div>
-    <div id="txt" value="一段文本"></div>
+    <div id="txt">一段文本</div>
 </body>
 <script>
 (function() {
@@ -229,7 +229,7 @@ function getLocation() {
                 alert(resp.msg || 'getLocationInfo error')
             }
             alert(response)
-            document.getElementById('txt').value = resp.city
+            document.getElementById('txt').innerHTML = resp.city
         })
     })
 }
@@ -244,7 +244,7 @@ function getUserInfo() {
                 alert(response.msg)
             }
             alert(response)
-            document.getElementById('txt').value = resp.uuid
+            document.getElementById('txt').innerHTML = resp.uuid
         })
     })
 }
