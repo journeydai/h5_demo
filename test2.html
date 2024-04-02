@@ -244,7 +244,7 @@ function getUserInfo() {
                 alert(response.msg)
             }
             alert(response)
-            document.getElementById('txt').innerHTML = resp.uuid
+            document.getElementById('txt').innerHTML = resp.data.accessToken
         })
     })
 }
