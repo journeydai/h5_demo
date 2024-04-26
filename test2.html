@@ -279,7 +279,7 @@ function refreshToken() {
     return new Promise(() => {
         hcJsBridge.callHandler('webkit.refreshMallAccessToken', {}, function (response) {
             alert(response)
-            resolve(JSON.parse(response))
+            // resolve(JSON.parse(response))
         })
     })
 }
