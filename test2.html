@@ -36,7 +36,7 @@
         <input type="button" id="call" value="拨打电话">
         <input type="button" id="location" value="定位">
         <input type="button" id="userInfo" value="用户信息">
-<!--         <input type="button" id="share" value="分享" onclick="click"> -->
+        <input type="button" id="picture" value="图片">
     </div>
     <div id="txt">一段文本</div>
 </body>
@@ -195,6 +195,7 @@ window.onload = function() {
     document.getElementById('call').onclick = callPhone;
     document.getElementById('location').onclick = getLocation;
     document.getElementById('userInfo').onclick = getUserInfo;
+    document.getElementById('picture').onclick = getAppImg;
 }
 
 function share() {
@@ -245,6 +246,14 @@ function getUserInfo() {
             }
             alert(response)
             document.getElementById('txt').innerHTML = resp.data.accessToken
+        })
+    })
+}
+
+function getAppImg() {
+    return new Promise(() => {
+        hcJsBridge.callHandler('webkit.getAppImg', {}, function (response) {
+            
         })
     })
 }
