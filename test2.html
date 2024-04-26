@@ -252,6 +252,10 @@ function getUserInfo() {
 
 function getAppImg() {
     return new Promise(() => {
+        let params = {
+            type: 1,
+            imgNumber: 1
+        }
         hcJsBridge.callHandler('webkit.getAppImg', {}, function (response) {
             
         })
