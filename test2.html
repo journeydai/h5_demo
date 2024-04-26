@@ -37,6 +37,7 @@
         <input type="button" id="location" value="定位">
         <input type="button" id="userInfo" value="用户信息">
         <input type="button" id="picture" value="图片">
+        <input type="button" id="payWechat" value="微信支付">
     </div>
     <div id="txt">一段文本</div>
 </body>
@@ -196,6 +197,7 @@ window.onload = function() {
     document.getElementById('location').onclick = getLocation;
     document.getElementById('userInfo').onclick = getUserInfo;
     document.getElementById('picture').onclick = getAppImg;
+    document.getElementById('payWechat').onclick = payWechat;
 }
 
 function share() {
@@ -259,6 +261,15 @@ function getAppImg() {
         hcJsBridge.callHandler('webkit.getAppImg', params, function (response) {
             
         })
+    })
+}
+
+function payWechat() {
+    let params = {
+        orderNo: '112233sdsfa'
+    }
+    hcJsBridge.callHandler('webkit.payWechat', params, function (response) {
+        
     })
 }
 
