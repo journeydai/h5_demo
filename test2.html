@@ -277,7 +277,7 @@ function payWechat() {
 
 function refreshToken() {
     return new Promise(() => {
-        hcJsBridge.callHandler('webkit.refreshMallAccessToken', {}, function (response) {
+        hcJsBridge.callHandler('webkit.getMallLoginInfo', {}, function (response) {
             alert(response)
             // resolve(JSON.parse(response))
         })
