@@ -135,6 +135,7 @@
             if (typeof nativeBridgeHead === "undefined") {
                 window.webkit.messageHandlers.handleStartupMessage.postMessage("");
             } else {
+                alert("aabbcce")
                 nativeBridgeHead.handleStartupMessage();
             }
             hcJsBridge.ok = true;
