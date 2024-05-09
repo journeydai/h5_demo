@@ -81,7 +81,7 @@
         hcJsBridge.messageHandlers[name] = handler;
     }
 
-    hcJsBridge.registerHandler('onAppLoginSuccess', function () {
+    window.hcJsBridge.registerHandler('onAppLoginSuccess', function () {
       alert('onAppLoginSuccess')
     })
 
