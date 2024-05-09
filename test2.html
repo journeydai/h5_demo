@@ -84,11 +84,11 @@ var vConsole = new window.VConsole();
     }
 
     hcJsBridge.registerHandler('onAppLoginSuccess', function () {
-      alert('onAppLoginSuccess')
+      console('onAppLoginSuccess')
     })
 
     hcJsBridge.registerHandler('onAppH5Pageshow', function () {
-      alert('onAppH5Pagehide')
+      console('onAppH5Pagehide')
     })
 
     /**
@@ -132,6 +132,7 @@ var vConsole = new window.VConsole();
             }
         }
     }
+*/
     
     setTimeout(function () {
         try {
@@ -145,7 +146,6 @@ var vConsole = new window.VConsole();
             console.warn(e);
         }        
     }, 0);
-    */
 })();
     
 window.MagicJSBridge = {
