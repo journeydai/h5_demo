@@ -83,7 +83,7 @@ var vConsole = new window.VConsole();
         hcJsBridge.messageHandlers[name] = handler;
     }
 
-    window.hcJsBridge.registerHandler('onAppLoginSuccess', function () {
+    hcJsBridge.registerHandler('onAppLoginSuccess', function () {
       alert('onAppLoginSuccess')
     })
 
@@ -137,7 +137,6 @@ var vConsole = new window.VConsole();
             if (typeof nativeBridgeHead === "undefined") {
                 window.webkit.messageHandlers.handleStartupMessage.postMessage("");
             } else {
-                alert("aabbcce")
                 nativeBridgeHead.handleStartupMessage();
             }
             hcJsBridge.ok = true;
