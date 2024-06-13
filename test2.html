@@ -242,19 +242,25 @@ function getLocation() {
 }
 
 function getUserInfo() {
-    // return new Promise((resolve, reject) => {
-    //     hcJsBridge.callHandler('webkit.getAppUserInfo', {}, function (response) {
-    //         // resolve(JSON.parse(response))
-    //         const resp = JSON.parse(response)
-    //         if ( JSON.parse(response).stateCode == '-1' ||
-    //              JSON.parse(response).stateCode == -1) {
-    //             alert(response.msg)
-    //         }
-    //         alert(response)
-    //         document.getElementById('txt').innerHTML = resp.data.accessToken
-    //     })
-    // })
-    MagicJSBridge.openLogin()
+    return new Promise((resolve, reject) => {
+        hcJsBridge.callHandler('webkit.getAppUserInfo', {}, function (response) {
+            // resolve(JSON.parse(response))
+            const resp = JSON.parse(response)
+            let userInfo = {
+                statusCode: 0,
+                data: {
+                    access_token: ""
+                }
+            }
+            userInfo.data.access_token = resp.data.userInfo.wdhacid
+            if ( JSON.parse(response).stateCode == '-1' ||
+                 JSON.parse(response).stateCode == -1) {
+                alert(response.msg)
+            }
+            alert(response)
+            document.getElementById('txt').innerHTML = userInfo.data.access_token
+        })
+    })
 }
 
 function getAppImg() {
