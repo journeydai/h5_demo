@@ -258,6 +258,7 @@ function getUserInfo() {
                 alert(response.msg)
             }
             alert(response)
+            console('wdhacid:' + userInfo.data.access_token)
             document.getElementById('txt').innerHTML = userInfo.data.access_token
         })
     })
