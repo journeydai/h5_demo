@@ -39,7 +39,7 @@
         <input type="button" id="picture" value="图片">
         <input type="button" id="payWechat" value="微信支付">
         <input type="button" id="refreshToken" value="刷新token">
-        <input type="button" id="openApp" value="打开app1">
+        <input type="button" id="openApp" value="打开app2">
     </div>
     <div id="txt">一段文本</div>
 </body>
@@ -203,11 +203,7 @@ window.onload = function() {
     document.getElementById('picture').onclick = getAppImg;
     document.getElementById('payWechat').onclick = payWechat;
     document.getElementById('refreshToken').onclick = refreshToken;
-
-    var iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = "superappftms2://com.toyota.ftms.app.actdetail?articleId=123";
-    document.body.appendChild(iframe);
+    document.getElementById('openApp').onclick = openApp;
 }
 
 function share() {
@@ -298,6 +294,14 @@ function refreshToken() {
     //         // resolve(JSON.parse(response))
     //     })
     // })
+}
+
+function openApp() {
+    console.log('openAppFuncExecute');
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = "superappftms2://com.toyota.ftms.app.actdetail?articleId=123";
+    document.body.appendChild(iframe);
 }
 
 </script>
