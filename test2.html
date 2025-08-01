@@ -39,7 +39,7 @@
         <input type="button" id="picture" value="图片">
         <input type="button" id="payWechat" value="微信支付">
         <input type="button" id="refreshToken" value="刷新token">
-        <input type="button"
+        <input type="button" id="openApp" value="openApp4">
     </div>
     <div id="txt">一段文本</div>
 </body>
@@ -60,6 +60,7 @@ var vConsole = new window.VConsole();
         ok:false,
     };
     var uniqueId = 1;
+    console.log(aValue);
     
     function callHandler(name, data, responseCallback) {
         if (arguments.length == 2 && typeof data == 'function') {
